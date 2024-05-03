@@ -1,1 +1,26 @@
-{"key":"extendedinput","legacyScriptURL":"http://localhost:8080/input_leg.js","scriptURL":"http://localhost:8080/input_ng.js","legacyStyleSheetURL":"","styleSheetURL":"","icon":"Textbox","attributes":{"max":"Max.  If numeric, the maximum allowed value","min":"Min.  If numeric, the minimum allowed value","step":"Step.  If numeric, the step interval","classes":"Classes.  space delimited list of class names"},"configurationEditors":["LABEL","EDITABLE","STATE_VALUE","HINT_VALUE","HELP_INFO"],"designTimeImageURL":null,"designTimeRenderType":"INPUT","dateCreated":"2024-05-03T08:35:28.23674+00:00","dateModified":"2024-05-03T09:32:08.6541435+00:00","id":"f50ef199-5eff-4553-a6bc-630676bc3d37","elementType":"CUSTOM_PAGE_COMPONENT","developerName":"Extended Input","developerSummary":"Input component with extended reatures","whoCreated":{"id":"4e027512-3134-4403-91c2-227e8256a7f0","firstName":"Mark","lastName":"Watts","email":"markwatts@boomi.com"},"whoModified":{"id":"4e027512-3134-4403-91c2-227e8256a7f0","firstName":"Mark","lastName":"Watts","email":"markwatts@boomi.com"},"whoOwner":{"id":"4e027512-3134-4403-91c2-227e8256a7f0","firstName":"Mark","lastName":"Watts","email":"markwatts@boomi.com"}}
+{
+    "key":"extendedinput",
+    "legacyScriptURL":"http://localhost:8080/input_leg.js",
+    "scriptURL":"http://localhost:8080/input_ng.js",
+    "legacyStyleSheetURL":"",
+    "styleSheetURL":"",
+    "icon":"Textbox",
+    "attributes":{
+        "max":"Max.  If numeric, the maximum allowed value",
+        "min":"Min.  If numeric, the minimum allowed value",
+        "step":"Step.  If numeric, the step interval",
+        "classes":"Classes.  space delimited list of class names"
+    },
+    "configurationEditors":["LABEL","EDITABLE","STATE_VALUE","HINT_VALUE","HELP_INFO"],
+    "designTimeImageURL":null,
+    "designTimeRenderType":"INPUT",
+    "dateCreated":"2024-05-03T08:35:28.23674+00:00",
+    "dateModified":"2024-05-03T09:32:08.6541435+00:00",
+    "id":"f50ef199-5eff-4553-a6bc-630676bc3d37",
+    "elementType":"CUSTOM_PAGE_COMPONENT",
+    "developerName":"Extended Input",
+    "developerSummary":"Input component with extended reatures",
+    "whoCreated":{"id":"4e027512-3134-4403-91c2-227e8256a7f0","firstName":"Mark","lastName":"Watts","email":"markwatts@boomi.com"},
+    "whoModified":{"id":"4e027512-3134-4403-91c2-227e8256a7f0","firstName":"Mark","lastName":"Watts","email":"markwatts@boomi.com"},
+    "whoOwner":{"id":"4e027512-3134-4403-91c2-227e8256a7f0","firstName":"Mark","lastName":"Watts","email":"markwatts@boomi.com"}
+}

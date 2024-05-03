@@ -1,17 +1,21 @@
 {
-  "name": "###_TEMPLATE_###",
+  "name": "extendedbasecomponents",
   "version": "1.0.0",
-  "description": "###_TEMPLATE_###",
+  "description": "Extended Base Components",
   "scripts": {
     "startInput": "esbuild ./src/Input/InputNew.tsx --outfile=./build/input_ng.js --sourcemap=both --serve=8080 --servedir=build --bundle --format=esm --watch",
     "startInputLegacy": "esbuild ./src/Input/InputLegacy.tsx --outfile=./build/input_leg.js --sourcemap=both --serve=8080 --servedir=build --bundle --format=esm --watch",
     "buildInput": "esbuild ./src/Input/InputNew.tsx --outfile=./build/input_ng.js --bundle  --format=esm",
     "buildInputLegacy": "esbuild ./src/Input/InputLegacy.tsx --outfile=./build/input_leg.js --bundle  --format=esm",
     "buildInputs": "npm run buildInput & npm run buildInputLegacy",
-    
-    "startLegacy": "esbuild ./src/TemplateLegacy.tsx --outfile=./build/template_leg.js --sourcemap=both --serve=8080 --servedir=build --bundle --format=esm --watch",
-    "buildLegacy": "esbuild ./src/TemplateLegacy.tsx --outfile=./build/template_leg.js --minify --bundle  --format=esm ",
-    "buildAll": "npm run buildInputs & npm run buildInputs"
+
+    "startSelect": "esbuild ./src/Select/SelectNew.tsx --outfile=./build/select_ng.js --sourcemap=both --serve=8080 --servedir=build --bundle --format=esm --watch",
+    "startSelectLegacy": "esbuild ./src/Select/SelectLegacy.tsx --outfile=./build/select_leg.js --sourcemap=both --serve=8080 --servedir=build --bundle --format=esm --watch",
+    "buildSelect": "esbuild ./src/Select/SelectNew.tsx --outfile=./build/select_ng.js --bundle  --format=esm",
+    "buildSelectLegacy": "esbuild ./src/Select/SelectLegacy.tsx --outfile=./build/select_leg.js --bundle  --format=esm",
+    "buildSelects": "npm run buildSelect & npm run buildSelectLegacy",
+
+    "buildAll": "npm run buildInputs & npm run buildSelects"
   },
   "author": "Boomi",
   "license": "MIT",
