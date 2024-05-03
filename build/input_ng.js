@@ -3147,14 +3147,21 @@ var _Input = class extends React2.Component {
     this.onBlur = this.onBlur.bind(this);
     this.getValue = this.getValue.bind(this);
     this.getFlowValue = this.getFlowValue.bind(this);
-    this.state = { value: "" };
+    this.state = { value: "", origValue: "" };
   }
   componentDidMount() {
-    this.setState({ value: this.getValue(this.component.contentValue) });
+    let val = this.getValue(this.component.contentValue);
+    this.setState({ value: val, origValue: val });
   }
   onBlur({ target: { value } }) {
     this.component.setStateValue(this.getFlowValue(value));
-    this.setState({ value: this.getValue(value) });
+    let newVal = this.getValue(value);
+    if (newVal !== this.state.origValue) {
+      this.setState({ origValue: this.getValue(value) });
+      if (this.component.outcomes["onBlur"]) {
+        this.component.triggerOutcome("onBlur");
+      }
+    }
   }
   getValue(value) {
     switch (this.component.contentType) {
@@ -3211,6 +3218,7 @@ var _Input = class extends React2.Component {
       step,
       min,
       max,
+      size: parseInt(this.component.getAttribute("size", "25")),
       placeholder: this.component.hintValue ?? "",
       onInput: this.onInput,
       onBlur: this.onBlur,
@@ -3225,7 +3233,11 @@ var _Input = class extends React2.Component {
         this.component?.contentType === eContentType.ContentPassword ? "new-password" : ""
       )
     };
-    return /* @__PURE__ */ React2.createElement("input", { ...inputProps });
+    let style = {};
+    if (this.props.display) {
+      style.display = this.props.display;
+    }
+    return /* @__PURE__ */ React2.createElement("input", { style, ...inputProps });
   }
 };
 

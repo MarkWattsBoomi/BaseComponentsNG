@@ -3250,14 +3250,21 @@ var _Input = class extends React2.Component {
     this.onBlur = this.onBlur.bind(this);
     this.getValue = this.getValue.bind(this);
     this.getFlowValue = this.getFlowValue.bind(this);
-    this.state = { value: "" };
+    this.state = { value: "", origValue: "" };
   }
   componentDidMount() {
-    this.setState({ value: this.getValue(this.component.contentValue) });
+    let val = this.getValue(this.component.contentValue);
+    this.setState({ value: val, origValue: val });
   }
   onBlur({ target: { value } }) {
     this.component.setStateValue(this.getFlowValue(value));
-    this.setState({ value: this.getValue(value) });
+    let newVal = this.getValue(value);
+    if (newVal !== this.state.origValue) {
+      this.setState({ origValue: this.getValue(value) });
+      if (this.component.outcomes["onBlur"]) {
+        this.component.triggerOutcome("onBlur");
+      }
+    }
   }
   getValue(value) {
     switch (this.component.contentType) {
@@ -3314,6 +3321,7 @@ var _Input = class extends React2.Component {
       step,
       min,
       max,
+      size: parseInt(this.component.getAttribute("size", "25")),
       placeholder: this.component.hintValue ?? "",
       onInput: this.onInput,
       onBlur: this.onBlur,
@@ -3328,7 +3336,11 @@ var _Input = class extends React2.Component {
         this.component?.contentType === eContentType.ContentPassword ? "new-password" : ""
       )
     };
-    return /* @__PURE__ */ React2.createElement("input", { ...inputProps });
+    let style = {};
+    if (this.props.display) {
+      style.display = this.props.display;
+    }
+    return /* @__PURE__ */ React2.createElement("input", { style, ...inputProps });
   }
 };
 
@@ -3346,15 +3358,36 @@ var ExtendedInput = class extends FCMLegacy {
     }
   }
   render() {
+    let className = "mw-input form-group";
+    if (Object.keys(this.outcomes).length > 0) {
+      className += " has-outcomes";
+    }
+    className += " " + this.getAttribute("classes", "");
+    let style = {};
+    if (this.isVisible === false) {
+      style.display = "none";
+    }
+    let required;
+    if (this.isRequired) {
+      required = /* @__PURE__ */ React3.createElement("span", { className: "input-required" }, " *");
+    }
     return /* @__PURE__ */ React3.createElement(
-      _Input,
+      "div",
       {
-        key: this.id,
-        parent: this,
-        ref: (element) => {
-          this.childComponent = element;
+        className,
+        style
+      },
+      /* @__PURE__ */ React3.createElement("div", null, /* @__PURE__ */ React3.createElement("label", { htmlFor: "this.id" }, this.label, required), /* @__PURE__ */ React3.createElement(
+        _Input,
+        {
+          key: this.id,
+          parent: this,
+          ref: (element) => {
+            this.childComponent = element;
+          },
+          display: "block"
         }
-      }
+      ), /* @__PURE__ */ React3.createElement("span", { className: "help-block" }, this.helpInfo))
     );
   }
 };
